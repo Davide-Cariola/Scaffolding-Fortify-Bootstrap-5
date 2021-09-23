@@ -40,7 +40,7 @@
                       Not yet subscribed? <a class="tc-accent" href="{{'register'}}"> Subscribe here</a>
                     </p>
                     @if(Route::has('password.request'))
-                      <a href="{{route('forgot-password')}}" class="btn btn-link">Forgot your password?</a>
+                      <a href="/forgot-password" class="btn btn-link">Forgot your password?</a>
                     @endif
               </form>
             </div>

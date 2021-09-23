@@ -41,7 +41,7 @@ php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
 
 Add in config/app.php, in providers[] array:
 ```bash
-App\Providers\FortifyServiceProvider::class
+App\Providers\FortifyServiceProvider::class,
 ```
 
 
