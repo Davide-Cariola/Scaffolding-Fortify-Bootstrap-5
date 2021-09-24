@@ -9,6 +9,7 @@ Just install Scaffolding Fortify Bootstrap and you're ready to code right away!
 
 Specifically, it will:
 * install Laravel/Fortify Package
+* install Laravel/Socialite Package
 * install bootstrap 5, popperjs/core
 * update resources/app.js and resources/app.css 
 * run npm install && npm run dev
@@ -29,19 +30,29 @@ To get started, install package using composer:
 composer require davidecariola/scaffolding-fortify-bootstrap
 ```
 
+
 Next, run install artisan command to publish scaffolding:
 ```bash
 php artisan sfb:install
 ```
+
 
 Publish Laravel Fortify:
 ```bash
 php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
 ```
 
+
 Add in config/app.php, in providers[] array:
 ```bash
-App\Providers\FortifyServiceProvider::class
+App\Providers\FortifyServiceProvider::class,
+Laravel\Socialite\SocialiteServiceProvider::class,
+```
+
+
+Add in config/app.php, in aliases[] array:
+```bash
+'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 ```
 
 
@@ -76,18 +87,35 @@ Fortify::resetPasswordView(function ($request) {
 });
 ```
 
+
 Remember to update const HOME in RouteServiceProvider:
 ```bash
 public const HOME = '/';
 ```
 
+
 In .env file, link your smtp service (like [Mailtrap](https://mailtrap.io/)) and update sender.
+
+
+In .env file, insert the same google keys you inserted in services.php:
+```bash
+GOOGLE_CLIENT_ID=YOUR_GOOGLE_CLIENT_ID
+GOOGLE_CLIENT_SECRET=YOUR_GOOGLE_CLIENT_SECRET
+GOOGLE_REDIRECT=http://localhost:8000/callback
+```
+
+Create a new migration to add google_id in the users table:
+```bash
+php artisan make:migration add_google_id_column_to_users_table
+```
+
 
 
 When you're ready:
 ```bash
 php artisan migrate
 ```
+
 
 Build something amazing!!
 
