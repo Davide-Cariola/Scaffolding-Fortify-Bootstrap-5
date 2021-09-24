@@ -109,6 +109,7 @@ Create a new migration to add google_id in the users table:
 php artisan make:migration add_google_id_column_to_users_table
 ```
 
+Add 'google_id' in the User model, in fillable[].
 
 
 When you're ready:
