@@ -43,10 +43,23 @@ class ScaffoldingFortifyBootstrap extends Command{
             '--force' => 'true'
         ]);
 
+        $this->call('vendor:publish', [
+            '--provider' => 'DavideCariola\ScaffoldingFortifyBootstrap\ScaffoldingFortifyBootstrapServiceProvider',
+            '--tag' => 'service.php',
+            '--force' => 'true'
+        ]);
+
+        $this->call('vendor:publish', [
+            '--provider' => 'DavideCariola\ScaffoldingFortifyBootstrap\ScaffoldingFortifyBootstrapServiceProvider',
+            '--tag' => 'socialite',
+            '--force' => 'true'
+        ]);
+
 
         $this->executeCommand('npm install bootstrap', base_path());
         $this->executeCommand('npm install @popperjs/core', base_path());
         $this->executeCommand('npm install && npm run dev', base_path());
+        $this->executeCommand('php artisan make:controller SocialiteController', base_path());
     }
 
 
