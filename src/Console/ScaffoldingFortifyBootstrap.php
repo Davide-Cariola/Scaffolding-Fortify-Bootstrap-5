@@ -45,7 +45,7 @@ class ScaffoldingFortifyBootstrap extends Command{
 
         $this->call('vendor:publish', [
             '--provider' => 'DavideCariola\ScaffoldingFortifyBootstrap\ScaffoldingFortifyBootstrapServiceProvider',
-            '--tag' => 'service.php',
+            '--tag' => 'services.php',
             '--force' => 'true'
         ]);
 

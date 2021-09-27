@@ -11,7 +11,7 @@ use Laravel\Socialite\Facades\Socialite;
 class SocialiteController extends Controller
 {
     public function redirectToProvider(){
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('google')->stateless()->redirect();
     }
     
 
