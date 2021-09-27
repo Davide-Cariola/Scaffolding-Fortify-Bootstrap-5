@@ -26,38 +26,38 @@ Specifically, it will:
 
 ## Installation
 
-To get started, install package using composer:
+1. To get started, install package using composer:
 ```bash
 composer require davidecariola/scaffolding-fortify-bootstrap
 ```
 
 
-Next, run install artisan command to publish scaffolding:
+2. Next, run install artisan command to publish scaffolding:
 ```bash
 php artisan sfb:install
 ```
 
 
-Publish Laravel Fortify:
+3. Publish Laravel Fortify:
 ```bash
 php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
 ```
 
 
-Add in config/app.php, in providers[] array:
+4. Add in config/app.php, in providers[] array:
 ```bash
 App\Providers\FortifyServiceProvider::class,
 Laravel\Socialite\SocialiteServiceProvider::class,
 ```
 
 
-Add in config/app.php, in aliases[] array:
+5. Add in config/app.php, in aliases[] array:
 ```bash
 'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 ```
 
 
-Enable in fortify.php, in features[]:
+6. Make sure the following are enabled in config\fortify.php, in features[]:
 ```bash
 Features::registration(),
 Features::resetPasswords(),
@@ -69,7 +69,7 @@ Features::twoFactorAuthentication([
 ```
 
 
-Add in FortifyServiceProvider, in boot() function:
+7. Add in app\Providers\FortifyServiceProvider, in boot() function:
 ```bash
 Fortify::loginView(function () {
         return view('auth.login');
@@ -89,40 +89,40 @@ Fortify::resetPasswordView(function ($request) {
 ```
 
 
-Remember to update const HOME in RouteServiceProvider:
+8. Remember to update const HOME in app\Providers\RouteServiceProvider:
 ```bash
 public const HOME = '/';
 ```
 
 
-In .env file, link your smtp service (like [Mailtrap](https://mailtrap.io/)) and update sender.
+9. In .env file, link your smtp service (like [Mailtrap](https://mailtrap.io/)) and update sender.
 
-In services.php, update google[] with your identification data.
+10. In app\config\services.php, update google[] with your identification data.
 
-In .env file, insert the same google keys you inserted in services.php:
+11. In .env file, insert the same google keys you inserted in services.php:
 ```bash
 GOOGLE_CLIENT_ID=YOUR_GOOGLE_CLIENT_ID
 GOOGLE_CLIENT_SECRET=YOUR_GOOGLE_CLIENT_SECRET
 GOOGLE_REDIRECT=http://localhost:8000/callback
 ```
 
-Create a new migration to add google_id in the users table:
+12. After creating the database, create a new migration to add google_id field in the users table:
 ```bash
 php artisan make:migration add_google_id_column_to_users_table
 ```
 
-Then proceed to set 'google_id' as a string in the migration.
+13. Then proceed to set 'google_id' as a string in the migration.
 
-Add 'google_id' in the User model, in fillable[].
+14. Add 'google_id' in app\Models\User, in fillable[].
 
 
-When you're ready:
+15. When you're ready:
 ```bash
 php artisan migrate
 ```
 
 
-Build something amazing!!
+16. Build something amazing!!
 
 
 ## Usage
