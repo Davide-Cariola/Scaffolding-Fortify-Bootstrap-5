@@ -132,7 +132,7 @@ Just install this package and begin coding without worries!
 
 ## What's next?
 
-I will cover every Laravel/Fortify possibility, like TwoFactorAuthentication, and also Laravel/Socialite package.
+I will cover every Laravel/Fortify possibility, like TwoFactorAuthentication.
 
 
 ## License
