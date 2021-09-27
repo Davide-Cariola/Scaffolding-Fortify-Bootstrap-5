@@ -14,6 +14,9 @@ class ScaffoldingFortifyBootstrapServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        include __DIR__.'/routes.php';
+
+        $this->loadRoutesFrom(__DIR__.'/routes.php');
         
         
         // Publishing is only necessary when using the CLI.
@@ -23,7 +26,6 @@ class ScaffoldingFortifyBootstrapServiceProvider extends ServiceProvider
             ]);
         }
 
-        // php artisan vendor:publish --provider='DavideCariola\ScaffoldingFortifyBootstrap\ScaffoldingFortifyBootstrapServiceProvider' [[--tag='views']] [[--force]]
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views'),
         ], 'views');
@@ -48,9 +50,6 @@ class ScaffoldingFortifyBootstrapServiceProvider extends ServiceProvider
             __DIR__.'/../app/Controllers/SocialiteController' => app_path('Http/Controllers/SocialiteController'),
         ], 'socialiteController');
 
-        $this->publishes([
-            __DIR__.'/../routes/web.php' => resource_path('routes/web.php'),
-        ], 'routes');
     }
 
     /**
@@ -90,22 +89,5 @@ class ScaffoldingFortifyBootstrapServiceProvider extends ServiceProvider
             __DIR__.'/../config/ScaffoldingFortifyBootstrap.php' => config_path('ScaffoldingFortifyBootstrap.php'),
         ], 'ScaffoldingFortifyBootstrap.config');
 
-        // Publishing the views.
-        /*$this->publishes([
-            __DIR__.'/../resources/views' => base_path('resources/views/vendor/davidecariola'),
-        ], 'ScaffoldingFortifyBootstrap.views');*/
-
-        // Publishing assets.
-        /*$this->publishes([
-            __DIR__.'/../resources/assets' => public_path('vendor/davidecariola'),
-        ], 'ScaffoldingFortifyBootstrap.views');*/
-
-        // Publishing the translation files.
-        /*$this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/davidecariola'),
-        ], 'ScaffoldingFortifyBootstrap.views');*/
-
-        // Registering package commands.
-        // $this->commands([]);
     }
 }
