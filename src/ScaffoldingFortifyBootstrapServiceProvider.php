@@ -43,11 +43,11 @@ class ScaffoldingFortifyBootstrapServiceProvider extends ServiceProvider
         ], 'css');
 
         $this->publishes([
-            __DIR__.'/../config/services.php' => resource_path('config/service.php'),
+            __DIR__.'/../config/services.php' => app_path('config/service.php'),
         ], 'service.php');
 
         $this->publishes([
-            __DIR__.'/../app/Controllers/SocialiteController' => app_path('Http/Controllers/SocialiteController'),
+            __DIR__.'/../app/Controllers/SocialiteController.php' => app_path('Http/Controllers/SocialiteController.php'),
         ], 'socialiteController');
 
     }

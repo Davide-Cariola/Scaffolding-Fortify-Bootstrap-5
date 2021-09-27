@@ -28,7 +28,7 @@
             <form method="POST" action="{{route('login')}}" enctype="multipart/form-data">
                 @csrf
                     <div class="mb-3 text-center">
-                      <button class="btn btn-primary"><a href="{{route('google.login')}}">Login with Google</a></button>
+                      <button class="btn btn-primary"><a href="{{route('google.login')}}" class="text-white">Login with Google</a></button>
                     </div>
                     <div class="mb-3">
                       <label for="userMail" class="form-label">Email</label>

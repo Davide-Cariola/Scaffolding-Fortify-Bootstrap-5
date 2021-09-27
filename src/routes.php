@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SocialiteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -12,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/redirect', [SocialiteController::class, 'redirectToProvider'])->name('google.login');
-Route::get('/callback', [SocialiteController::class, 'handleProviderCallback'])->name('google.callback');
+Route::group(['middleware' => ['web']], function () {
+    Route::get('/redirect', [SocialiteController::class, 'redirectToProvider'])->name('google.login');
+    Route::get('/callback', [SocialiteController::class, 'handleProviderCallback'])->name('google.callback');
+});

@@ -16,6 +16,7 @@ Specifically, it will:
 * create components folder in resources/views with layout file
 * create auth folder in resources/views with login, register, forgot-password and reset-password files in it
 * every user related view will already have a complete form with csrf token, methods, actions, validation errors and session messages
+* create a controller named SocialiteController which manages authentication with Google
 
 
 ## Requirements
@@ -96,6 +97,7 @@ public const HOME = '/';
 
 In .env file, link your smtp service (like [Mailtrap](https://mailtrap.io/)) and update sender.
 
+In services.php, update google[] with your identification data.
 
 In .env file, insert the same google keys you inserted in services.php:
 ```bash
@@ -108,6 +110,8 @@ Create a new migration to add google_id in the users table:
 ```bash
 php artisan make:migration add_google_id_column_to_users_table
 ```
+
+Then proceed to set 'google_id' as a string in the migration.
 
 Add 'google_id' in the User model, in fillable[].
 
